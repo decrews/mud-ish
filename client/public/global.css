@@ -1,0 +1,278 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--default-bg);
+  color: var(--default-fg-normal);
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
+}
+
+a {
+  color: rgb(0, 100, 200);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: rgb(0, 80, 160);
+}
+
+label {
+  display: block;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input:disabled {
+  color: #ccc;
+}
+
+button {
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
+}
+
+button:disabled {
+  color: #999;
+}
+
+button:not(:disabled):active {
+  background-color: #ddd;
+}
+
+button:focus {
+  border-color: #666;
+}
+
+/* Colors and stuff */
+
+/* normal colors */
+
+.black {
+  color: #141520;
+}
+
+.gray {
+  color: #242534;
+}
+
+.white {
+  color: #484a5d;
+}
+
+.red {
+  color: #551623;
+}
+
+.blue {
+  color: #25247b;
+}
+
+.green {
+  color: #157441;
+}
+
+.cyan {
+  color: #386397;
+}
+
+.yellow {
+  color: #9a7c1c;
+}
+
+.magenta {
+  color: #7b0875;
+}
+
+/* dark colors */
+
+.dblack {
+  color: #0a0b11;
+}
+
+.dgray {
+  color: #1d1e2f;
+}
+
+.dwhite {
+  color: #303144;
+}
+
+.dred {
+  color: #3e0a15;
+}
+
+.dblue {
+  color: #121157;
+}
+
+.dgreen {
+  color: #084625;
+}
+
+.dcyan {
+  color: #183d69;
+}
+
+.dyellow {
+  color: #7c5a07;
+}
+
+.dmagenta {
+  color: #51034a;
+}
+
+/* light colors */
+
+.lblack {
+  color: #0e0f18;
+}
+
+.lgray {
+  color: #4a4c5d;
+}
+
+.lwhite {
+  color: #75778b;
+}
+
+.lred {
+  color: #97162d;
+}
+
+.lblue {
+  color: #3e43ba;
+}
+
+.lgreen {
+  color: #37a869;
+}
+
+.lcyan {
+  color: #387fc2;
+}
+
+.lyellow {
+  color: #caa237;
+}
+
+.lmagenta {
+  color: #a31a94;
+}
+
+/* vivid colors */
+
+.vblack {
+  color: #000000;
+}
+
+.vgray {
+  color: #aaaaaa;
+}
+
+.vwhite {
+  color: #ffffff;
+}
+
+.vred {
+  color: #ff0000;
+}
+
+.vblue {
+  color: #0000ff;
+}
+
+.vgreen {
+  color: #00ff00;
+}
+
+.vcyan {
+  color: #00ffff;
+}
+
+.vyellow {
+  color: #ffff00;
+}
+
+.vmagenta {
+  color: #ff00ff;
+}
+
+/* vibrant colors */
+
+.vbblack {
+  color: #aaaaaa;
+  background-color: #0a0b11;
+}
+
+.vbgray {
+  color: #aaaaaa;
+  background-color: #1d1e2f;
+}
+
+.vbwhite {
+  color: #ffffff;
+  background-color: #303144;
+}
+
+.vbred {
+  color: #ff0000;
+  background-color: #3e0a15;
+}
+
+.vbblue {
+  color: #0000ff;
+  background-color: #121157;
+}
+
+.vbgreen {
+  color: #00ff00;
+  background-color: #084625;
+}
+
+.vbcyan {
+  color: #00ffff;
+  background-color: #183d69;
+}
+
+.vbyellow {
+  color: #ffff00;
+  background-color: #7c5a07;
+}
+
+.vbmagenta {
+  color: #ff00ff;
+  background-color: #51034a;
+}
+
+/* Default Global "Theme" */
+
+:root {
+  --default-bg: #1f212f;
+  --default-fg-normal: #939da4;
+  --default-terminal-bg: #141520;
+  --default-fg-system: #4467a4;
+}

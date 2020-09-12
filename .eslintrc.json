@@ -1,0 +1,25 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+  "extends": ["eslint:recommended", "prettier"],
+
+  "rules": {
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "single"],
+    "indent": ["warn", 2],
+    "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+  },
+
+  "globals": {
+    "io": true
+  }
+}
