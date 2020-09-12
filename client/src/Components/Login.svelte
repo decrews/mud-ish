@@ -1,10 +1,12 @@
 <script>
-  let name = '';
+  let name = ''; // bound to the text input
   export let connect;
 
   function onSubmit(e) {
-    console.warn('SUBMITTINGSDFSDF');
+    // gotta do this
     e.preventDefault();
+
+    // tell the app to create a new connection with this name
     connect(name);
   }
 </script>

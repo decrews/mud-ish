@@ -5,7 +5,6 @@
   export let message;
   let input;
   let box;
-  let button;
 
   onMount(() => {
     input.focus();
