@@ -41,6 +41,7 @@ function userDisconnected(socket) {
   // remove user from the currently connected users
   users = users.filter((user) => user.id !== socket.id);
   sendUserList();
+  sendServerMessage(null, `${socket.username} has disconnected!`);
 }
 
 function sendUserList() {
@@ -60,7 +61,9 @@ function sendUserMessage(socket, payload) {
 }
 
 function sendServerMessage(socket, message, broadcast = false) {
-  if (broadcast) {
+  if (!socket) {
+    io.emit(Events.ServerMessage, { id: 'server', text: message, time: Date.now() });
+  } else if (broadcast) {
     socket.broadcast.emit(Events.ServerMessage, { id: 'server', text: message, time: Date.now() });
   } else {
     socket.emit(Events.ServerMessage, { id: 'server', text: message, time: Date.now() });
@@ -69,7 +72,7 @@ function sendServerMessage(socket, message, broadcast = false) {
 
 // SERVER SETUP
 // set static folder
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`server running on port ${PORT}`));

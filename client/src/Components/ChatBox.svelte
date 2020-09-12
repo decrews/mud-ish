@@ -1,71 +1,116 @@
 <script>
-    export let messages;
-    export let sendMessage;
-    export let message;
-    let input;
-    let button;
+  import { onMount } from 'svelte';
+  export let messages;
+  export let sendMessage;
+  export let message;
+  let input;
+  let box;
+  let button;
 
-    function onMessage(e) {
-        e.preventDefault();
-        sendMessage(message);
-        message = '';
-    }
+  onMount(() => {
+    input.focus();
+  });
+
+  function onMessage(e) {
+    // gotta do this to prevent the form from reloading the page
+    // DUMB
+    e.preventDefault();
+
+    // call the function from App.svelte to send the message
+    sendMessage(message);
+
+    // message is bound to the input box, reset it
+    message = '';
+
+    // scroll to the bottom of chat box
+    box.scrollIntoView(false);
+  }
 </script>
 
 <main>
-    <div class="message-box">
-        {#each messages as message (message.id + message.time + message.text)}
-            {#if message.user}
-                <p>{message.user.username} - {message.text}</p>
-            {/if}
-            {#if message.id === 'server'} 
-                <p class='server-message'>{message.text}</p>
-            {/if}
-        {/each}
+  <div class="message-box" bind:this={box}>
+    <div class="spacer" />
+    {#each messages as message (message.id + message.time + message.text)}
+      {#if message.user}
+        <p><span class="name">{message.user.username}</span> - {message.text}</p>
+      {/if}
+      {#if message.id === 'server'}
+        <p class="server-message">{message.text}</p>
+      {/if}
+    {/each}
+    <div class="text-container">
+      <span>{'> '}</span>
+      <form on:submit={(e) => onMessage(e)}>
+        <input class="text-box" type="text" bind:this={input} bind:value={message} />
+      </form>
     </div>
-    <form on:submit={(e) => onMessage(e)}>
-        <input type="text" bind:this={input} bind:value={message}>
-    </form>
+  </div>
 </main>
 
 <style>
-	main {
-        padding: 1em;
-        text-align: left;
-    }
+  main {
+    text-align: left;
+  }
 
-    p {
-        margin-top: 0;
-        margin-bottom: 0;
-        width: 100%;
-        background-color: aqua;
-    }
-    
-    .message-box {
-        display: flex;
-        min-width: 500px;
-        height: 300px;
-        text-align: left;
-        background-color: var(--default-terminal-bg);
-        padding: 1em;
-        overflow: scroll;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        flex-direction: column;
-        justify-content: flex-end;
-    }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-    .message-box::-webkit-scrollbar {
-        display: none;
-    }
+  form {
+    background-color: aqua;
+    height: 32px;
+  }
 
-    .server-message {
-        font-weight: bold;
-    }
+  .spacer {
+    height: 0;
+    margin-top: auto;
+  }
 
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-        }
+  .message-box {
+    display: flex;
+    flex: 1;
+    min-width: 500px;
+    height: 320px;
+    text-align: left;
+    background-color: var(--default-terminal-bg);
+    padding: 1em;
+    overflow-y: scroll;
+    flex-direction: column;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .text-box {
+    background-color: var(--default-terminal-bg);
+    color: var(--default-fg-normal);
+    flex: 1;
+    border-radius: 0px;
+    border: 0px;
+    outline: none;
+  }
+
+  .text-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .message-box::-webkit-scrollbar {
+    display: none;
+  }
+
+  .server-message {
+    font-weight: bold;
+    color: var(--default-fg-system);
+  }
+
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
     }
+  }
 </style>
